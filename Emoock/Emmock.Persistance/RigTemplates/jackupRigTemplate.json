@@ -1,0 +1,22 @@
+{
+	"EquipmentTemplates": [
+		{
+			"Name": "JackupEquipment",
+			"Type": "Piston",
+			"Fields": [
+				{
+					"$type": "Emmock.Core.Models.DateTimeField, Emmock.Core",
+					"Type": "DateTime",
+					"Name": "InspectedData",
+					"TypedValue": "0001-01-01T00:00:00"
+				},
+				{
+					"$type": "Emmock.Core.Models.DateTimeField, Emmock.Core",
+					"Type": "DateTime",
+					"Name": "RenewalDate",
+					"TypedValue": "0001-01-01T00:00:00"
+				}
+			]
+		}
+	]
+}
