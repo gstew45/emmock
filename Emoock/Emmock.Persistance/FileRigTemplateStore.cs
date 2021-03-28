@@ -10,7 +10,7 @@ namespace Emmock.Persistance
 
 		private readonly IFileSystem m_fileSystem;
 		private readonly ISerializer m_serializer;
-		private readonly string m_rigTemplatePath = "RigTemplates";
+		private readonly string m_rigTemplatePath = @"Data\RigTemplates";
 
 		public FileRigTemplateStore(IFileSystem fileSystem, ISerializer serializer)
 		{

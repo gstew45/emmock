@@ -24,8 +24,13 @@ namespace Emmock.Persistance
 			string currentDirectory = m_fileSystem.Directory.GetCurrentDirectory();
 			m_rigStorePath = m_fileSystem.Path.Combine(currentDirectory, @"Data\rigStore.json");
 
-			string data = string.Empty;
+			lock (m_rigStoreLock)
+			{
+				if (!m_fileSystem.File.Exists(m_rigStorePath))
+					m_fileSystem.File.Create(m_rigStorePath);
+			}
 
+			string data = string.Empty;
 			lock (m_rigStoreLock)
 			{
 				data = m_fileSystem.File.ReadAllText(m_rigStorePath);
@@ -55,5 +60,7 @@ namespace Emmock.Persistance
 
 			return createdRig;
 		}
+
+		public IEnumerable<Rig> GetAll() => m_rigs;
 	}
 }

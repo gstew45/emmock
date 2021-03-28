@@ -1,0 +1,1 @@
+[{"Id":"f6dd0ed9-5c43-4ea5-a192-e752286e496f","RigId":"c31a1a1f-291e-4b0a-86a1-aacbe9784489","Fields":[{"$type":"Emmock.Core.Models.DateTimeField, Emmock.Core","Type":"DateTime","Name":"InspectedData","TypedValue":"0001-01-01T00:00:00"},{"$type":"Emmock.Core.Models.DateTimeField, Emmock.Core","Type":"DateTime","Name":"RenewalDate","TypedValue":"0001-01-01T00:00:00"}]}]

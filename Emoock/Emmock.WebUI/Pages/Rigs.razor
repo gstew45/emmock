@@ -1,0 +1,39 @@
+﻿@page "/rigs"
+
+<h1>Rigs</h1>
+
+@if (RigsViewModel == null)
+{
+	<p><em>Loading...</em></p>
+}
+else
+{
+	<a href="/createrig">Create Rig</a>
+	if (RigsViewModel.Rigs.Any())
+	{
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Description</th>
+					<th>Type</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var rig in RigsViewModel.Rigs)
+				{
+					<tr>
+						<td>@rig.Id</td>
+						<td>@rig.Description</td>
+						<td>@rig.Type</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	}
+	else
+	{
+		<p>No rigs currently stored in the system.</p>
+	}
+}

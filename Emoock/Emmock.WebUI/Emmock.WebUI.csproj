@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="Data\jackupRigTemplate.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Data\RigTemplates\jackupRigTemplate.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Emmock.Application\Emmock.Application.csproj" />
+    <ProjectReference Include="..\Emmock.Persistance\Emmock.Persistance.csproj" />
+    <ProjectReference Include="..\Emmock.Services\Emmock.Services.csproj" />
+  </ItemGroup>
+
+</Project>

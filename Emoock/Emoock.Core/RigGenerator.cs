@@ -3,7 +3,7 @@ using Emmock.Core.Models;
 
 namespace Emmock.Core
 {
-	public sealed class RigGenerator
+	public sealed class RigGenerator : IRigGenerator
 	{
 		private readonly IRigRepository m_rigRepository;
 		private readonly IEquipmentRepository m_equipmentRepository;

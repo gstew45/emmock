@@ -25,6 +25,12 @@ namespace Emmock.Persistance
 			string currentDirectory = m_fileSystem.Directory.GetCurrentDirectory();
 			m_equipmentStorePath = m_fileSystem.Path.Combine(currentDirectory, @"Data\equipmentStore.json");
 
+			lock (m_equipmentStoreLock)
+			{
+				if (!m_fileSystem.File.Exists(m_equipmentStorePath))
+					m_fileSystem.File.Create(m_equipmentStorePath);
+			}
+
 			string data = string.Empty;
 
 			lock (m_equipmentStoreLock)
