@@ -7,7 +7,7 @@
   <ItemGroup>
     <None Remove="Data\equipmentStore.json" />
     <None Remove="Data\rigStore.json" />
-    <None Remove="RigTemplates\jackupRigTemplate.json" />
+    <None Remove="Data\RigTemplates\jackupRigTemplate.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,7 +17,7 @@
     <EmbeddedResource Include="Data\rigStore.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="RigTemplates\jackupRigTemplate.json">
+    <EmbeddedResource Include="Data\RigTemplates\jackupRigTemplate.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>

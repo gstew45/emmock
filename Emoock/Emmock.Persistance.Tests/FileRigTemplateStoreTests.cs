@@ -44,7 +44,7 @@ namespace Emmock.Persistance.Tests
 
 			m_testSubject.GetRigTemplate(rigType);
 
-			A.CallTo(() => m_fileSystem.Path.Combine(currentDirectory, "RigTemplates", rigTemplateFileName)).MustHaveHappenedOnceExactly();
+			A.CallTo(() => m_fileSystem.Path.Combine(currentDirectory, @"Data\RigTemplates", rigTemplateFileName)).MustHaveHappenedOnceExactly();
 		}
 
 		[TestMethod]
@@ -54,7 +54,7 @@ namespace Emmock.Persistance.Tests
 			A.CallTo(() => m_fileSystem.Directory.GetCurrentDirectory()).Returns(currentDirectory);
 
 			string expectedTemplatePath = @"CurrentDirectory\RigTemplates\jackupRigTemplate.json";
-			A.CallTo(() => m_fileSystem.Path.Combine(currentDirectory, "RigTemplates", "jackupRigTemplate.json")).Returns(expectedTemplatePath);
+			A.CallTo(() => m_fileSystem.Path.Combine(currentDirectory, @"Data\RigTemplates", "jackupRigTemplate.json")).Returns(expectedTemplatePath);
 
 			m_testSubject.GetRigTemplate("Jackup");
 
@@ -65,7 +65,7 @@ namespace Emmock.Persistance.Tests
 		public void GetRigTemplate_Deserializes_RigTemplate_From_Data_Returns_RigTemplate()
 		{
 			string expectedTemplatePath = @"RigTemplates\jackupRigTemplate.json";
-			A.CallTo(() => m_fileSystem.Path.Combine("RigTemplates", "jackupRigTemplate.json")).Returns(expectedTemplatePath);
+			A.CallTo(() => m_fileSystem.Path.Combine(@"Data\RigTemplates", "jackupRigTemplate.json")).Returns(expectedTemplatePath);
 			A.CallTo(() => m_fileSystem.File.ReadAllText(expectedTemplatePath)).Returns(GetRigTemplateData());
 
 			RigTemplate rigTemplate = m_testSubject.GetRigTemplate("Jackup");
