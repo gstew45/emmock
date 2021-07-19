@@ -4,6 +4,6 @@ namespace Emmock.Core.Interfaces
 {
 	public interface IRigGenerator
 	{
-		Rig GenerateRig(string rigtype);
+		Rig GenerateRig(string rigtype, string name, string description);
 	}
 }

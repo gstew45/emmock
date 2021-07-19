@@ -16,17 +16,26 @@ namespace Emmock.Core
 			m_rigTemplateRepository = rigTemplateRepository;
 		}
 
-		public Rig GenerateRig(string rigType)
+		public Rig GenerateRig(string rigType, string name, string description)
 		{
 			RigTemplate rigTemplate = m_rigTemplateRepository.GetRigTemplate(rigType);
 
-			Rig rig = m_rigRepository.Create(rigType);
+			Rig rig = m_rigRepository.Create(rigType, name, description);
 
 			foreach (EquipmentTemplate equipmentTemplate in rigTemplate.EquipmentTemplates)
 			{
-				Equipment currentEquipment = m_equipmentRepository.Create(rig.Id, equipmentTemplate.Name, equipmentTemplate.Type);
-
+				Equipment currentEquipment = m_equipmentRepository.Create(rig.Id, null, equipmentTemplate.Name, equipmentTemplate.Type, equipmentTemplate.IsSystem);
 				currentEquipment.Fields.AddRange(equipmentTemplate.Fields);
+
+				foreach (EquipmentTemplate subTemplate in equipmentTemplate.SubTemplates)
+				{
+					// All sub items must set isSystem to false.
+					Equipment subEquipment = m_equipmentRepository.Create(rig.Id, currentEquipment.Id, subTemplate.Name, subTemplate.Type, isSystem: false);
+					subEquipment.Fields.AddRange(subTemplate.Fields);
+
+					m_equipmentRepository.Update(subEquipment);
+				}
+
 				m_equipmentRepository.Update(currentEquipment);
 			}
 

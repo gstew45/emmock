@@ -5,7 +5,7 @@ namespace Emmock.Core.Interfaces
 {
 	public interface IRigRepository
 	{
-		Rig Create(string rigType);
+		Rig Create(string rigType, string name, string description);
 		IEnumerable<Rig> GetAll();
 	}
 }

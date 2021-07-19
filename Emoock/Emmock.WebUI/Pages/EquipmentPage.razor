@@ -1,0 +1,32 @@
+﻿@page "/equipment/details"
+
+@using Emmock.WebUI.Components
+
+@if (DetailsViewModel == null)
+{
+	<p><em>Loading...</em></p>
+}
+else
+{
+	<h1>Equipment - @DetailsViewModel.EquipmentDetails.Name</h1>
+	@if (DetailsViewModel.IsEquipmentUnderEdit)
+	{
+		<Stack Horizontal="false">
+			<Stack Horizontal="true" Style=@("height:44px")>
+				<CommandBarButton IconName="Save" Text="Save" OnClick=@(() => DetailsViewModel.ConfirmEdit()) />
+				<CommandBarButton IconName="Cancel" Text="Cancel" OnClick=@(() => DetailsViewModel.CancelEdit()) />
+			</Stack>
+
+
+			@foreach (var field in DetailsViewModel.EquipmentDetails.Fields)
+			{
+				<p>@field.Name :</p>
+				<FieldComponent Field="field" />
+			}
+		</Stack>
+	}
+	else
+	{
+		<CommandBarButton IconName="Edit" Text="Edit" OnClick=@(() => DetailsViewModel.EditEquipment()) />
+	}
+}

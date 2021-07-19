@@ -66,7 +66,7 @@ namespace Emmock.Persistance.Tests
 		public void Create_ReturnsCreatedEquipment_With_IdAndRigId_Populated()
 		{
 			string expectedRigId = "TestRigId";
-			Equipment createdEquipment = m_testSubject.Create(expectedRigId, "TestEquipmentName", "TestEquipmentType");
+			Equipment createdEquipment = m_testSubject.Create(expectedRigId, null, "TestEquipmentName", "TestEquipmentType", false);
 
 			Assert.IsFalse(string.IsNullOrEmpty(createdEquipment.Id));
 			Assert.AreEqual(expectedRigId, createdEquipment.RigId);
@@ -76,7 +76,7 @@ namespace Emmock.Persistance.Tests
 		public void Create_CreatedEquipment_AddedToEquipmentList()
 		{
 			string expectedRigId = "TestRigId";
-			Equipment createdEquipment = m_testSubject.Create(expectedRigId, "TestEquipmentName", "TestEquipmentType");
+			Equipment createdEquipment = m_testSubject.Create(expectedRigId, null, "TestEquipmentName", "TestEquipmentType", false);
 
 			Assert.AreEqual(m_expectedEquipment.Count + 1, m_testSubject.Equipment.Count());
 			Assert.IsTrue(m_testSubject.Equipment.Contains(createdEquipment));
@@ -89,7 +89,7 @@ namespace Emmock.Persistance.Tests
 			A.CallTo(() => m_serializer.SerializeObject(A<IEnumerable<Equipment>>._)).Returns(equipmentStoreData);
 
 			string expectedRigId = "TestRigId";
-			Equipment createdEquipment = m_testSubject.Create(expectedRigId, "TestEquipmentName", "TestEquipmentType");
+			Equipment createdEquipment = m_testSubject.Create(expectedRigId, null, "TestEquipmentName", "TestEquipmentType", false);
 
 			A.CallTo(() => m_fileSystem.File.WriteAllText(m_equipmentStorePath, equipmentStoreData)).MustHaveHappenedOnceExactly();
 		}

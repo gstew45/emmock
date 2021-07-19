@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="Emmock.Desktop.PageDisplayerControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			 xmlns:app="clr-namespace:Emmock.Application.ViewModels;assembly=Emmock.Application"
+			 xmlns:pages="clr-namespace:Emmock.Desktop.Pages"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="800">
+	<UserControl.Resources>
+		<DataTemplate DataType="{x:Type app:HomeViewModel}">
+			<TextBlock Text="This is the home view model." />
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type app:RigsViewModel}">
+			<pages:RigsPage />
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type app:CreateNewRigViewModel}">
+			<pages:CreateNewRigPage />
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type app:CreateSystemViewModel}">
+			<pages:CreateNewSystemPage />
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type app:CreateNewEquipmentViewModel}">
+			<pages:CreateNewEquipmentPage />
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type app:RigDetailsViewModel}">
+			<pages:RigDetailsPage />
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type app:EquipmentDetailsViewModel}">
+			<pages:EquipmentDetailsPage />
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type app:TestingViewModel}">
+			<pages:TestingPage />
+		</DataTemplate>
+	</UserControl.Resources>
+	<ContentPresenter Content="{Binding}" />
+</UserControl>

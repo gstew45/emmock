@@ -1,8 +1,8 @@
-﻿using Emmock.Core;
-using Emmock.Core.Interfaces;
+﻿using Emmock.Core.Interfaces;
 using Emmock.Core.Interfaces.Services;
 using Emmock.Core.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Emmock.Services
 {
@@ -17,10 +17,12 @@ namespace Emmock.Services
 			m_rigGenerator = rigGenerator;
 		}
 
-		public Rig CreateRig(string rigType) => m_rigRepo.Create(rigType);
+		public Rig CreateRig(string rigType, string name, string description) => m_rigRepo.Create(rigType, name, description);
 
-		public Rig GenerateRig(string rigType) => m_rigGenerator.GenerateRig(rigType);
+		public Rig GenerateRig(string rigType, string name, string description) => m_rigGenerator.GenerateRig(rigType, name, description);
 
 		public IEnumerable<Rig> GetAllRigs() => m_rigRepo.GetAll();
+
+		public Rig GetRigById(string rigId) => GetAllRigs().FirstOrDefault(r => r.Id == rigId);
 	}
 }

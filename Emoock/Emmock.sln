@@ -17,17 +17,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Emmock.Persistance", "Emmoc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Emmock.Persistance.Tests", "Emmock.Persistance.Tests\Emmock.Persistance.Tests.csproj", "{2A7A3B67-308F-4A70-AD71-11C1BFB2EFCD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Emmock.Core.Tests", "Emmock.Core.Tests\Emmock.Core.Tests.csproj", "{F6733EF4-BEE0-41BF-AD75-3FE262E73654}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Emmock.Core.Tests", "Emmock.Core.Tests\Emmock.Core.Tests.csproj", "{F6733EF4-BEE0-41BF-AD75-3FE262E73654}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Emmock.Integration.Tests", "Emmock.Integration.Tests\Emmock.Integration.Tests.csproj", "{F1633B5F-2AFE-48FD-A1E1-9615E71E913A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Emmock.Integration.Tests", "Emmock.Integration.Tests\Emmock.Integration.Tests.csproj", "{F1633B5F-2AFE-48FD-A1E1-9615E71E913A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Emmock.Services", "Emmock.Services\Emmock.Services.csproj", "{AD86137C-488F-414F-A0E1-65C3F44DEA67}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Emmock.Services", "Emmock.Services\Emmock.Services.csproj", "{AD86137C-488F-414F-A0E1-65C3F44DEA67}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{72CF1897-3C93-4710-8DF6-4650F054538C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Emmock.Application", "Emmock.Application\Emmock.Application.csproj", "{00D864D6-AD26-435D-9887-A2AC05649C2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Emmock.Application", "Emmock.Application\Emmock.Application.csproj", "{00D864D6-AD26-435D-9887-A2AC05649C2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Emmock.WebUI", "Emmock.WebUI\Emmock.WebUI.csproj", "{31FD0A4B-288B-4F81-93F8-CC259D2990E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Emmock.WebUI", "Emmock.WebUI\Emmock.WebUI.csproj", "{31FD0A4B-288B-4F81-93F8-CC259D2990E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Emmock.Desktop", "Emmock.Desktop\Emmock.Desktop.csproj", "{53F469A3-F971-4FE1-A011-03FD0B856585}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,6 +69,10 @@ Global
 		{31FD0A4B-288B-4F81-93F8-CC259D2990E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31FD0A4B-288B-4F81-93F8-CC259D2990E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31FD0A4B-288B-4F81-93F8-CC259D2990E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53F469A3-F971-4FE1-A011-03FD0B856585}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53F469A3-F971-4FE1-A011-03FD0B856585}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53F469A3-F971-4FE1-A011-03FD0B856585}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53F469A3-F971-4FE1-A011-03FD0B856585}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,6 +86,7 @@ Global
 		{AD86137C-488F-414F-A0E1-65C3F44DEA67} = {272BD4C5-8713-4A09-BB73-247A2C8EEB89}
 		{00D864D6-AD26-435D-9887-A2AC05649C2C} = {49AC8B89-3E0F-40B3-8E6F-27C2160624A1}
 		{31FD0A4B-288B-4F81-93F8-CC259D2990E8} = {72CF1897-3C93-4710-8DF6-4650F054538C}
+		{53F469A3-F971-4FE1-A011-03FD0B856585} = {72CF1897-3C93-4710-8DF6-4650F054538C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F353E811-47C3-4391-A8AB-AE9BB55980E1}

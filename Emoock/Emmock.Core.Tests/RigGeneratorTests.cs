@@ -36,7 +36,7 @@ namespace Emmock.Core.Tests
 		[TestMethod]
 		public void GenerateRig_GetsRigTemplate_From_TemplateRepo()
 		{
-			m_testSubject.GenerateRig("Jackup");
+			m_testSubject.GenerateRig("Jackup", string.Empty, string.Empty);
 
 			A.CallTo(() => m_rigTemplateRepo.GetRigTemplate("Jackup")).MustHaveHappenedOnceExactly();
 		}
@@ -44,9 +44,9 @@ namespace Emmock.Core.Tests
 		[TestMethod]
 		public void GenerateRig_CreatesRig()
 		{
-			m_testSubject.GenerateRig("Jackup");
+			m_testSubject.GenerateRig("Jackup", string.Empty, string.Empty);
 
-			A.CallTo(() => m_rigRepo.Create("Jackup")).MustHaveHappenedOnceExactly();
+			A.CallTo(() => m_rigRepo.Create("Jackup", string.Empty, string.Empty)).MustHaveHappenedOnceExactly();
 		}
 
 		[TestMethod]
@@ -56,13 +56,13 @@ namespace Emmock.Core.Tests
 			A.CallTo(() => m_rigTemplateRepo.GetRigTemplate("Jackup")).Returns(rigTemplate);
 
 			Rig rig = new Rig() { Id = Guid.NewGuid().ToString() };
-			A.CallTo(() => m_rigRepo.Create("Jackup")).Returns(rig);
+			A.CallTo(() => m_rigRepo.Create("Jackup", string.Empty, string.Empty)).Returns(rig);
 
-			m_testSubject.GenerateRig("Jackup");
+			m_testSubject.GenerateRig("Jackup", string.Empty, string.Empty);
 
 			foreach (EquipmentTemplate equipmentTemplate in rigTemplate.EquipmentTemplates)
 			{
-				A.CallTo(() => m_equipmentRepo.Create(rig.Id, equipmentTemplate.Name, equipmentTemplate.Type)).MustHaveHappenedOnceExactly();
+				A.CallTo(() => m_equipmentRepo.Create(rig.Id, null, equipmentTemplate.Name, equipmentTemplate.Type, false)).MustHaveHappenedOnceExactly();
 			}
 		}
 
@@ -74,19 +74,19 @@ namespace Emmock.Core.Tests
 			A.CallTo(() => m_rigTemplateRepo.GetRigTemplate("Jackup")).Returns(rigTemplate);
 
 			Rig rig = new Rig() { Id = Guid.NewGuid().ToString() };
-			A.CallTo(() => m_rigRepo.Create("Jackup")).Returns(rig);
+			A.CallTo(() => m_rigRepo.Create("Jackup", string.Empty, string.Empty)).Returns(rig);
 
 			List<Equipment> createdEquipmentList = new List<Equipment>();
 			foreach (EquipmentTemplate equipmentTemplate in rigTemplate.EquipmentTemplates)
 			{
 				Equipment equipment = new Equipment() { Id = equipmentTemplate.Name };
-				A.CallTo(() => m_equipmentRepo.Create(rig.Id, equipmentTemplate.Name, equipmentTemplate.Type)).Returns(equipment);
+				A.CallTo(() => m_equipmentRepo.Create(rig.Id, null, equipmentTemplate.Name, equipmentTemplate.Type, false)).Returns(equipment);
 
 				createdEquipmentList.Add(equipment);
 			}
 
 			// act
-			m_testSubject.GenerateRig("Jackup");
+			m_testSubject.GenerateRig("Jackup", string.Empty, string.Empty);
 
 			// assert
 			foreach (EquipmentTemplate equipmentTemplate in rigTemplate.EquipmentTemplates)
@@ -105,19 +105,19 @@ namespace Emmock.Core.Tests
 			A.CallTo(() => m_rigTemplateRepo.GetRigTemplate("Jackup")).Returns(rigTemplate);
 
 			Rig rig = new Rig() { Id = Guid.NewGuid().ToString() };
-			A.CallTo(() => m_rigRepo.Create("Jackup")).Returns(rig);
+			A.CallTo(() => m_rigRepo.Create("Jackup", string.Empty, string.Empty)).Returns(rig);
 
 			List<Equipment> createdEquipmentList = new List<Equipment>();
 			foreach (EquipmentTemplate equipmentTemplate in rigTemplate.EquipmentTemplates)
 			{
 				Equipment equipment = new Equipment() { Id = equipmentTemplate.Name };
-				A.CallTo(() => m_equipmentRepo.Create(rig.Id, equipmentTemplate.Name, equipmentTemplate.Type)).Returns(equipment);
+				A.CallTo(() => m_equipmentRepo.Create(rig.Id, null, equipmentTemplate.Name, equipmentTemplate.Type, false)).Returns(equipment);
 
 				createdEquipmentList.Add(equipment);
 			}
 
 			// act
-			m_testSubject.GenerateRig("Jackup");
+			m_testSubject.GenerateRig("Jackup", string.Empty, string.Empty);
 
 			// assert
 			foreach (EquipmentTemplate equipmentTemplate in rigTemplate.EquipmentTemplates)
@@ -135,9 +135,9 @@ namespace Emmock.Core.Tests
 			A.CallTo(() => m_rigTemplateRepo.GetRigTemplate("Jackup")).Returns(rigTemplate);
 
 			Rig expectedRig = new Rig() { Id = Guid.NewGuid().ToString() };
-			A.CallTo(() => m_rigRepo.Create("Jackup")).Returns(expectedRig);
+			A.CallTo(() => m_rigRepo.Create("Jackup", string.Empty, string.Empty)).Returns(expectedRig);
 
-			Rig rig = m_testSubject.GenerateRig("Jackup");
+			Rig rig = m_testSubject.GenerateRig("Jackup", string.Empty, string.Empty);
 
 			Assert.AreEqual(expectedRig.Id, rig.Id);
 		}

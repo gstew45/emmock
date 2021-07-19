@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\FullLogoBlueBackground.png" />
+    <None Remove="Images\IconBlueBackground.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Images\FullLogoBlueBackground.png" />
+    <EmbeddedResource Include="Images\IconBlueBackground.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0-preview.1.21102.12" />
+    <PackageReference Include="System.IO.Abstractions" Version="13.2.28" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Emmock.Application\Emmock.Application.csproj" />
+    <ProjectReference Include="..\Emmock.Persistance\Emmock.Persistance.csproj" />
+    <ProjectReference Include="..\Emmock.Services\Emmock.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Windows.Interactivity">
+      <HintPath>..\..\ExternalReferences\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

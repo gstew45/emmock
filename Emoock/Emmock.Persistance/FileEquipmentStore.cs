@@ -23,7 +23,8 @@ namespace Emmock.Persistance
 			m_serializer = serializer;
 
 			string currentDirectory = m_fileSystem.Directory.GetCurrentDirectory();
-			m_equipmentStorePath = m_fileSystem.Path.Combine(currentDirectory, @"Data\equipmentStore.json");
+			m_equipmentStorePath = m_fileSystem.Path.GetFullPath(m_fileSystem.Path.Combine(currentDirectory, @"..\..\..\..\..\"));
+			m_equipmentStorePath = m_fileSystem.Path.Combine(m_equipmentStorePath, @"DrillSurvData\equipmentStore.json");
 
 			lock (m_equipmentStoreLock)
 			{
@@ -43,12 +44,16 @@ namespace Emmock.Persistance
 
 		public IEnumerable<Equipment> Equipment => m_equipment;
 
-		public Equipment Create(string rigId, string name, string type)
+		public Equipment Create(string rigId, string parentId, string name, string type, bool isSystem)
 		{
 			Equipment createdEquipment = new Equipment()
 			{
 				Id = Guid.NewGuid().ToString(),
-				RigId = rigId
+				RigId = rigId,
+				ParentEquipmentId = parentId,
+				Name = name,
+				Type = type,
+				IsSystem = isSystem
 			};
 
 			m_equipment.Add(createdEquipment);
@@ -56,6 +61,27 @@ namespace Emmock.Persistance
 			CommitChangesToFile();
 
 			return createdEquipment;
+		}
+
+		public Equipment GetEquipment(string equipmentId)
+		{
+			Equipment equipment = Equipment.FirstOrDefault(e => e.Id == equipmentId);
+
+			// Get copy of object so we don't update the actual object in the store until Update is called.
+			string data = m_serializer.SerializeObject(equipment);
+			Equipment copiedObject = m_serializer.DeserializeObject<Equipment>(data);
+
+			return copiedObject;
+		}
+
+		public IEnumerable<Equipment> GetEquipmentByParent(string parentId)
+		{
+			return Equipment.Where(e => e.ParentEquipmentId == parentId).ToList();
+		}
+
+		public IEnumerable<Equipment> GetEquipmentByRig(string rigId)
+		{
+			return Equipment.Where(e => e.RigId == rigId).ToList();
 		}
 
 		public bool Update(Equipment equipmentToUpdate)

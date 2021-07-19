@@ -15,6 +15,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="BlazorFluentUI.CoreComponents" Version="5.0.1" />
+    <PackageReference Include="BlazorFluentUI.ListComponents" Version="5.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Emmock.Application\Emmock.Application.csproj" />
     <ProjectReference Include="..\Emmock.Persistance\Emmock.Persistance.csproj" />
     <ProjectReference Include="..\Emmock.Services\Emmock.Services.csproj" />

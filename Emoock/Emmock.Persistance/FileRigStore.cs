@@ -22,7 +22,8 @@ namespace Emmock.Persistance
 			m_serializer = serializer;
 
 			string currentDirectory = m_fileSystem.Directory.GetCurrentDirectory();
-			m_rigStorePath = m_fileSystem.Path.Combine(currentDirectory, @"Data\rigStore.json");
+			m_rigStorePath = m_fileSystem.Path.GetFullPath(m_fileSystem.Path.Combine(currentDirectory, @"..\..\..\..\..\"));
+			m_rigStorePath = m_fileSystem.Path.Combine(m_rigStorePath, @"DrillSurvData\rigStore.json");
 
 			lock (m_rigStoreLock)
 			{
@@ -41,11 +42,13 @@ namespace Emmock.Persistance
 
 		public IEnumerable<Rig> Rigs => m_rigs;
 
-		public Rig Create(string rigType)
+		public Rig Create(string rigType, string name, string description)
 		{
 			Rig createdRig = new Rig()
 			{
 				Id = Guid.NewGuid().ToString(),
+				Name = name,
+				Description = description,
 				Type = rigType
 			};
 

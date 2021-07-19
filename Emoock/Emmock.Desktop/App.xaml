@@ -1,0 +1,15 @@
+﻿<Application x:Class="Emmock.Desktop.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Emmock.Desktop">
+    <Application.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="pack://application:,,,/Emmock.Desktop;component/Resources/Themes/DarkTheme.xaml" />
+				<ResourceDictionary Source="pack://application:,,,/Emmock.Desktop;component/Resources/FontStyles.xaml" />
+				<ResourceDictionary Source="pack://application:,,,/Emmock.Desktop;component/Resources/TextBlockStyles.xaml" />
+				<ResourceDictionary Source="pack://application:,,,/Emmock.Desktop;component/Resources/DataGridStyles.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+    </Application.Resources>
+</Application>

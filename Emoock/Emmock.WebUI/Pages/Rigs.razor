@@ -1,4 +1,6 @@
 ﻿@page "/rigs"
+@using BlazorFluentUI
+@using Emmock.Core.Models
 
 <h1>Rigs</h1>
 
@@ -8,10 +10,18 @@
 }
 else
 {
-	<a href="/createrig">Create Rig</a>
+	<ActionButton IconName="Add" Href="/createrig">
+		New
+	</ActionButton>
+
+	<DatePicker AllowTextInput="false"
+				Style="max-width:300px; margin:0 0 15px 0;"
+				Placeholder="Select a date..."
+				@bind-Value=@selectedDate1
+				FirstDayOfWeek=@DayOfWeek.Sunday />
+
 	if (RigsViewModel.Rigs.Any())
 	{
-
 		<table class="table">
 			<thead>
 				<tr>
@@ -23,7 +33,7 @@ else
 			<tbody>
 				@foreach (var rig in RigsViewModel.Rigs)
 				{
-					<tr>
+					<tr @onclick="@(() => ViewRig(rig))">
 						<td>@rig.Id</td>
 						<td>@rig.Description</td>
 						<td>@rig.Type</td>
@@ -37,3 +47,7 @@ else
 		<p>No rigs currently stored in the system.</p>
 	}
 }
+
+@code {
+	DateTime? selectedDate1;
+} 

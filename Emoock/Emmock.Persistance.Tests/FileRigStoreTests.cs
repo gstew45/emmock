@@ -65,7 +65,7 @@ namespace Emmock.Persistance.Tests
 		[TestMethod]
 		public void Create_ReturnsCreatedRig_With_IdAndType_Populated()
 		{
-			Rig createdRig = m_testSubject.Create("Jackup");
+			Rig createdRig = m_testSubject.Create("Jackup", string.Empty, string.Empty);
 
 			Assert.IsFalse(string.IsNullOrEmpty(createdRig.Id));
 			Assert.AreEqual("Jackup", createdRig.Type);
@@ -74,7 +74,7 @@ namespace Emmock.Persistance.Tests
 		[TestMethod]
 		public void Create_CreatedRig_AddedToRigList()
 		{
-			Rig createdRig = m_testSubject.Create("Jackup");
+			Rig createdRig = m_testSubject.Create("Jackup", string.Empty, string.Empty);
 
 			Assert.AreEqual(m_expectedRigs.Count + 1, m_testSubject.Rigs.Count());
 			Assert.IsTrue(m_testSubject.Rigs.Contains(createdRig));
@@ -86,7 +86,7 @@ namespace Emmock.Persistance.Tests
 			string rigStoreData = "TestRigData";
 			A.CallTo(() => m_serializer.SerializeObject(A<IEnumerable<Rig>>._)).Returns(rigStoreData);
 
-			Rig createdRig = m_testSubject.Create("Jackup");
+			Rig createdRig = m_testSubject.Create("Jackup", string.Empty, string.Empty);
 
 			A.CallTo(() => m_fileSystem.File.WriteAllText(m_rigStorePath, rigStoreData)).MustHaveHappenedOnceExactly();
 		}

@@ -1,20 +1,42 @@
 {
 	"EquipmentTemplates": [
 		{
-			"Name": "JackupEquipment",
-			"Type": "Piston",
+			"Name": "BOP Stack",
+			"Type": "Stack",
+			"IsSystem":  "True",
 			"Fields": [
 				{
-					"$type": "Emmock.Core.Models.DateTimeField, Emmock.Core",
-					"Type": "DateTime",
-					"Name": "InspectedData",
-					"TypedValue": "0001-01-01T00:00:00"
+					"$type": "Emmock.Core.Models.TextField, Emmock.Core",
+					"Type": "Text",
+					"Name": "Summary",
+					"TypedValue": "This BOP Stack is installed, blah blah blah..."
 				},
 				{
-					"$type": "Emmock.Core.Models.DateTimeField, Emmock.Core",
-					"Type": "DateTime",
-					"Name": "RenewalDate",
-					"TypedValue": "0001-01-01T00:00:00"
+					"$type": "Emmock.Core.Models.DoubleField, Emmock.Core",
+					"Type": "Double",
+					"Name": "Height",
+					"TypedValue": "2.03"
+				}
+			],
+			"SubTemplates": [
+				{
+					"Name": "Jackup Piston",
+					"Type": "Piston",
+					"IsSystem": "False",
+					"Fields": [
+						{
+							"$type": "Emmock.Core.Models.DateTimeField, Emmock.Core",
+							"Type": "DateTime",
+							"Name": "InspectedDate",
+							"TypedValue": "0001-01-01T00:00:00"
+						},
+						{
+							"$type": "Emmock.Core.Models.DateTimeField, Emmock.Core",
+							"Type": "DateTime",
+							"Name": "RenewalDate",
+							"TypedValue": "0001-01-01T00:00:00"
+						}
+					]
 				}
 			]
 		}

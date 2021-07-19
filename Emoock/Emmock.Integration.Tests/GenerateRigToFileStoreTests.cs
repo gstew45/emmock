@@ -27,7 +27,7 @@ namespace Emmock.Integration.Tests
 
 			// act
 			RigGenerator rigGenerator = new RigGenerator(rigRepo, equipmentRepo, rigTemplateRepo);
-			rigGenerator.GenerateRig("Jackup");
+			rigGenerator.GenerateRig("Jackup", string.Empty, string.Empty);
 
 			// assert
 			Assert.AreEqual(1, rigRepo.Rigs.Count());

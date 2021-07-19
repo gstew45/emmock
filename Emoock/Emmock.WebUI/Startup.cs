@@ -1,3 +1,4 @@
+using BlazorFluentUI;
 using Emmock.Application.ViewModels;
 using Emmock.Core;
 using Emmock.Core.Interfaces;
@@ -36,6 +37,8 @@ namespace Emmock.WebUI
 		{
 			services.AddRazorPages();
 			services.AddServerSideBlazor();
+			services.AddBlazorFluentUI();
+
 			services.AddSingleton<WeatherForecastService>();
 
 			services.AddTransient<IFileSystem, FileSystem>();
@@ -47,9 +50,12 @@ namespace Emmock.WebUI
 
 			services.AddTransient<IRigGenerator, RigGenerator>();
 			services.AddTransient<IRigService, FileRigService>();
+			services.AddTransient<IEquipmentService, FileEquipmentService>();
 
 			services.AddTransient<RigsViewModel>();
 			services.AddTransient<CreateNewRigViewModel>();
+			services.AddTransient<RigDetailsViewModel>();
+			services.AddTransient<EquipmentDetailsViewModel>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
