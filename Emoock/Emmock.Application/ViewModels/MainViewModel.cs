@@ -22,7 +22,6 @@ namespace Emmock.Application.ViewModels
 			m_breadcrumbNavigationViewModel = breadcrumbNavigationViewModel;
 
 			SelectPageCommand = new DelegateCommand<Type>(SelectPage);
-			SelectPageCommand.Execute(CurrentPage.GetType());
 		}
 
 		public ICommand SelectPageCommand { get; }
@@ -32,6 +31,12 @@ namespace Emmock.Application.ViewModels
 		public BreadcrumbNavigationViewModel BreadcrumbViewModel => m_breadcrumbNavigationViewModel;
 
 		public ObservableCollection<SideBarItem> SideBarItems { get; } = new ObservableCollection<SideBarItem>();
+
+		public void Initialize()
+		{
+			m_pageService.Initialize();
+			SelectPageCommand.Execute(CurrentPage.GetType());
+		}
 
 		private void SelectPage(Type pageTypeToSelect)
 		{

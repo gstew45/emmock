@@ -21,12 +21,15 @@ namespace Emmock.Desktop
 		public WpfPageService(IPageFactory pageFactory)
 		{
 			m_pageFactory = pageFactory;
-
-			IPageViewModel page = m_pageFactory.GetPage<HomeViewModel>();
-			CurrentPage = page;
 		}
 
 		public event EventHandler CurrentPageChanged;
+
+		public void Initialize()
+		{
+			IPageViewModel page = m_pageFactory.GetPage<HomeViewModel>();
+			CurrentPage = page;
+		}
 
 		public IPageViewModel CurrentPage
 		{

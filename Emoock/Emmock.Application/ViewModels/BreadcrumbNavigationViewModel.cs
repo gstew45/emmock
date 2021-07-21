@@ -64,8 +64,6 @@ namespace Emmock.Application.ViewModels
 
 				currentPage = m_pageService.CurrentPage;
 			}
-
-			// m_pageService.ShowPage(associatedCrumbPageType, false, crumb.CrumbParams);
 		}
 
 		private void OnCurrentPageChanged(object sender, EventArgs e)

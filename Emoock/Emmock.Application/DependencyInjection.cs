@@ -2,7 +2,6 @@
 using Emmock.Application.Services;
 using Emmock.Application.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
-using System.Collections.Generic;
 
 namespace Emmock.Application
 {

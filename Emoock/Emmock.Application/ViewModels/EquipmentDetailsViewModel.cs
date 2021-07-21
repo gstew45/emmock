@@ -1,22 +1,19 @@
 ﻿using Emmock.Core.Interfaces.Services;
 using Emmock.Core.Models;
 using Prism.Commands;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
 namespace Emmock.Application.ViewModels
 {
-	public class EquipmentDetailsViewModel : IPageViewModel
+	public class EquipmentDetailsViewModel : BasePageViewModel
 	{
 		private readonly IEquipmentService m_equipmentService;
-		private readonly IPageService m_pageService;
 
-		public EquipmentDetailsViewModel(IEquipmentService equipmentService, IPageService pageService)
+		public EquipmentDetailsViewModel(IEquipmentService equipmentService, IPageService pageService) : base(pageService)
 		{
 			m_equipmentService = equipmentService;
-			m_pageService = pageService;
 
 			CreateNewEquipmentCommand = new DelegateCommand(CreateNewEquipment);
 			ShowEquipmentDetailsCommand = new DelegateCommand<Equipment>(ShowEquipmentDetails);
@@ -30,11 +27,11 @@ namespace Emmock.Application.ViewModels
 		public Equipment EquipmentDetails { get; private set; }
 		public bool IsEquipmentUnderEdit { get; set; } = false;
 
-		public string Title => $"{EquipmentDetails.Name} Details";
+		public override string Title => $"{EquipmentDetails.Name} Details";
 
-		public string Image => "";
+		public override string Image => "";
 
-		public bool IsRootPage => false;
+		public override bool IsRootPage => false;
 
 		public void Initialize(string equipmentId)
 		{
@@ -65,19 +62,7 @@ namespace Emmock.Application.ViewModels
 			IsEquipmentUnderEdit = false;
 		}
 
-		public void Opening()
-		{
-		}
-
-		public void Leaving()
-		{
-		}
-
-		public void Closing()
-		{
-		}
-
-		public void Initialize(Dictionary<string, object> pageParameterBundle)
+		public override void Initialize(Dictionary<string, object> pageParameterBundle)
 		{
 			string equipmentId = pageParameterBundle["EquipmentId"] as string;
 			if (string.IsNullOrEmpty(equipmentId))

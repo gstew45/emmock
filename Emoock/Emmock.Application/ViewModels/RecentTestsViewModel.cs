@@ -1,30 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Emmock.Application.ViewModels
 {
-	public class RecentTestsViewModel : IPageViewModel
+	public class RecentTestsViewModel : BasePageViewModel
 	{
-		public string Title => "Recent tests";
-
-		public string Image => throw new NotImplementedException();
-
-		public bool IsRootPage => false;
-
-		public void Closing()
+		public RecentTestsViewModel(IPageService pageService) : base(pageService)
 		{
 		}
 
-		public void Initialize(Dictionary<string, object> pageParameterBundle)
-		{
-		}
+		public override string Title => "Recent tests";
 
-		public void Leaving()
-		{
-		}
+		public override string Image => throw new NotImplementedException();
 
-		public void Opening()
-		{
-		}
+		public override bool IsRootPage => false;
 	}
 }

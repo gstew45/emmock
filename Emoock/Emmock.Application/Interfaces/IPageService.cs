@@ -16,5 +16,6 @@ namespace Emmock.Application
 		void ShowPage(Type pageType, bool showOnTop, Dictionary<string, object> pageParameterBundle);
 
 		void CloseCurrentPage();
+		void Initialize();
 	}
 }

@@ -1,34 +1,15 @@
-﻿using Emmock.Application.Supporting;
-using System.Collections.Generic;
-
-namespace Emmock.Application.ViewModels
+﻿namespace Emmock.Application.ViewModels
 {
-	public class HomeViewModel : ObservableObject, IPageViewModel
+	public class HomeViewModel : BasePageViewModel
 	{
-		public HomeViewModel()
+		public HomeViewModel(IPageService pageService) : base(pageService)
 		{
 		}
 
-		public string Title => "Home";
+		public override string Title => "Home";
 
-		public string Image => "";
+		public override string Image => "";
 
-		public bool IsRootPage => true;
-
-		public void Closing()
-		{
-		}
-
-		public void Initialize(Dictionary<string, object> pageParameterBundle)
-		{
-		}
-
-		public void Leaving()
-		{
-		}
-
-		public void Opening()
-		{
-		}
+		public override bool IsRootPage => true;
 	}
 }

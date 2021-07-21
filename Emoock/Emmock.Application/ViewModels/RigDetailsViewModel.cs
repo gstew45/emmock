@@ -1,7 +1,6 @@
 ﻿using Emmock.Core.Interfaces.Services;
 using Emmock.Core.Models;
 using Prism.Commands;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -9,18 +8,16 @@ using System.Windows.Input;
 
 namespace Emmock.Application.ViewModels
 {
-	public class RigDetailsViewModel : IPageViewModel
+	public class RigDetailsViewModel : BasePageViewModel
 	{
 		private readonly IRigService m_rigService;
 		private readonly IEquipmentService m_equipmentService;
-		private readonly IPageService m_pageService;
 		private readonly List<Equipment> m_rigEquipment = new List<Equipment>();
 
-		public RigDetailsViewModel(IRigService rigService, IEquipmentService equipmentService, IPageService pageService)
+		public RigDetailsViewModel(IRigService rigService, IEquipmentService equipmentService, IPageService pageService) : base(pageService)
 		{
 			m_rigService = rigService;
 			m_equipmentService = equipmentService;
-			m_pageService = pageService;
 
 			CreateNewSystemCommand = new DelegateCommand(CreateSystem);
 			ShowSystemDetailsCommand = new DelegateCommand<Equipment>(ShowSystemDetails);
@@ -33,15 +30,11 @@ namespace Emmock.Application.ViewModels
 
 		public ObservableCollection<Equipment> Systems { get; } = new ObservableCollection<Equipment>();
 
-		public string Title => $"{RigDetails.Name} Details";
+		public override string Title => $"{RigDetails.Name} Details";
 
-		public string Image => "";
+		public override string Image => "";
 
-		public bool IsRootPage => false;
-
-		public void Closing()
-		{
-		}
+		public override bool IsRootPage => false;
 
 		public void Initialize(string rigId)
 		{
@@ -56,21 +49,13 @@ namespace Emmock.Application.ViewModels
 			}
 		}
 
-		public void Initialize(Dictionary<string, object> pageParameterBundle)
+		public override void Initialize(Dictionary<string, object> pageParameterBundle)
 		{
 			string rigId = pageParameterBundle["RigId"] as string;
 			if (string.IsNullOrEmpty(rigId))
 				return;
 
 			Initialize(rigId);
-		}
-
-		public void Leaving()
-		{
-		}
-
-		public void Opening()
-		{
 		}
 
 		private void CreateSystem()

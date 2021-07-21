@@ -6,15 +6,14 @@ using System.Windows.Input;
 
 namespace Emmock.Application.ViewModels
 {
-	public class CreateNewRigViewModel : IPageViewModel
+	public class CreateNewRigViewModel : BasePageViewModel
 	{
 		private readonly IRigService m_rigService;
-		private readonly IPageService m_pageService;
 
-		public CreateNewRigViewModel(IRigService rigService, IPageService pageService)
+		public CreateNewRigViewModel(IRigService rigService, IPageService pageService) : base(pageService)
 		{
 			m_rigService = rigService;
-			m_pageService = pageService;
+
 			CreateRigCommand = new DelegateCommand(CreateRig);
 			CancelCommand = new DelegateCommand(Cancel);
 		}
@@ -28,11 +27,11 @@ namespace Emmock.Application.ViewModels
 		public string Type { get; set; }
 		public string Description { get; set; }
 
-		public string Title => "Create New Rig";
+		public override string Title => "Create New Rig";
 
-		public string Image => "";
+		public override string Image => "";
 
-		public bool IsRootPage => false;
+		public override  bool IsRootPage => false;
 
 		public void CreateRig()
 		{
@@ -47,22 +46,10 @@ namespace Emmock.Application.ViewModels
 			m_pageService.CloseCurrentPage();
 		}
 
-		public void Initialize(Dictionary<string, object> pageParameterBundle)
-		{
-		}
-
-		public void Leaving()
+		public override void Leaving()
 		{
 			Name = string.Empty;
 			Type = string.Empty;
-		}
-
-		public void Opening()
-		{
-		}
-
-		public void Closing()
-		{
 		}
 	}
 }

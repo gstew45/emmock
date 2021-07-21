@@ -7,15 +7,13 @@ using System.Windows.Input;
 
 namespace Emmock.Application.ViewModels
 {
-	public class RigsViewModel : IPageViewModel
+	public class RigsViewModel : BasePageViewModel
 	{
 		private readonly IRigService m_rigService;
-		private readonly IPageService m_pageService;
 
-		public RigsViewModel(IRigService rigService, IPageService pageService)
+		public RigsViewModel(IRigService rigService, IPageService pageService) : base(pageService)
 		{
 			m_rigService = rigService;
-			m_pageService = pageService;
 
 			CreateNewRigCommand = new DelegateCommand(CreateNewRig);
 			ShowRigDetailsCommand = new DelegateCommand<Rig>(ShowRigDetails);
@@ -26,17 +24,13 @@ namespace Emmock.Application.ViewModels
 
 		public ObservableCollection<Rig> Rigs { get; } = new ObservableCollection<Rig>();
 
-		public string Title => "Rigs";
+		public override string Title => "Rigs";
 
-		public string Image => "";
+		public override string Image => "";
 
-		public bool IsRootPage => true;
+		public override bool IsRootPage => true;
 
-		public void Closing()
-		{
-		}
-
-		public void Initialize()
+		public override void Initialize(Dictionary<string, object> pageParameterBundle)
 		{
 			foreach (Rig rig in m_rigService.GetAllRigs())
 			{
@@ -44,18 +38,9 @@ namespace Emmock.Application.ViewModels
 			}
 		}
 
-		public void Initialize(Dictionary<string, object> pageParameterBundle)
-		{
-			Initialize();
-		}
-
-		public void Leaving()
+		public override void Leaving()
 		{
 			Rigs.Clear();
-		}
-
-		public void Opening()
-		{
 		}
 
 		private void CreateNewRig()

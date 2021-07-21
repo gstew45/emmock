@@ -13,6 +13,7 @@ namespace Emmock.Desktop
 		{
 			InitializeComponent();
 
+            mainViewModel.Initialize();
             DataContext = mainViewModel;
 		}
 

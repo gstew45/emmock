@@ -22,7 +22,7 @@ namespace Emmock.WebUI.Pages
 		{
 			base.OnInitialized();
 
-			RigsViewModel.Initialize();
+			RigsViewModel.Initialize(null);
 			StateHasChanged();
 		}
 	}

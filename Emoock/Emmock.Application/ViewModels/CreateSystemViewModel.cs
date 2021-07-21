@@ -1,22 +1,19 @@
-﻿using Emmock.Application.Supporting;
-using Emmock.Core.Interfaces.Services;
+﻿using Emmock.Core.Interfaces.Services;
 using Prism.Commands;
 using System.Collections.Generic;
 using System.Windows.Input;
 
 namespace Emmock.Application.ViewModels
 {
-	public class CreateSystemViewModel : ObservableObject, IPageViewModel
+	public class CreateSystemViewModel : BasePageViewModel
 	{
 		private readonly IEquipmentService m_equipmentService;
-		private readonly IPageService m_pageService;
 
 		private string m_rigId;
 
-		public CreateSystemViewModel(IEquipmentService equipmentService, IPageService pageService)
+		public CreateSystemViewModel(IEquipmentService equipmentService, IPageService pageService) : base(pageService)
 		{
 			m_equipmentService = equipmentService;
-			m_pageService = pageService;
 
 			CreateSystemCommand = new DelegateCommand(CreateSystem);
 			CancelCommand = new DelegateCommand(Cancel);
@@ -28,32 +25,19 @@ namespace Emmock.Application.ViewModels
 		public string Name { get; set; }
 		public string Type { get; set; }
 
-		public bool IsRootPage => false;
+		public override bool IsRootPage => false;
 
-		public string Title => "Create New System";
+		public override string Title => "Create New System";
 
-		public string Image => "";
+		public override string Image => "";
 
-
-		public void Closing()
-		{
-		}
-
-		public void Initialize(Dictionary<string, object> pageParameterBundle)
+		public override void Initialize(Dictionary<string, object> pageParameterBundle)
 		{
 			string rigId = pageParameterBundle["RigId"] as string;
 			if (string.IsNullOrEmpty(rigId))
 				return;
 
 			m_rigId = rigId;
-		}
-
-		public void Leaving()
-		{
-		}
-
-		public void Opening()
-		{
 		}
 
 		private void CreateSystem()

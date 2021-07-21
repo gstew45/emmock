@@ -1,34 +1,37 @@
-﻿using System;
+﻿using Emmock.Application.Supporting;
 using System.Collections.Generic;
 
 namespace Emmock.Application.ViewModels
 {
-	public abstract class BasePageViewModel : IPageViewModel
+	public abstract class BasePageViewModel : ObservableObject, IPageViewModel
 	{
-		public string Title => throw new NotImplementedException();
+		protected readonly IPageService m_pageService;
 
-		public string Image => throw new NotImplementedException();
-
-		public bool IsRootPage => throw new NotImplementedException();
-
-		public void Closing()
+		public BasePageViewModel(IPageService pageService)
 		{
-			throw new NotImplementedException();
+			m_pageService = pageService;
+		}
+
+		public abstract string Title { get; }
+
+		public abstract string Image { get; }
+
+		public abstract bool IsRootPage { get; }
+
+		public virtual void Closing()
+		{
 		}
 
 		public virtual void Initialize(Dictionary<string, object> pageParameterBundle)
 		{
-			throw new NotImplementedException();
 		}
 
-		public void Leaving()
+		public virtual void Leaving()
 		{
-			throw new NotImplementedException();
 		}
 
-		public void Opening()
+		public virtual void Opening()
 		{
-			throw new NotImplementedException();
 		}
 	}
 }
