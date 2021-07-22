@@ -11,5 +11,6 @@ namespace Emmock.Core.Interfaces.Services
 
 		IEnumerable<Rig> GetAllRigs();
 		Rig GetRigById(string rigId);
+		void UpdateRig(Rig rigUnderEdit);
 	}
 }

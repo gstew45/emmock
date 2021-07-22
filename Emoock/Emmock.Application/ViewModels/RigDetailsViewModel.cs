@@ -12,17 +12,18 @@ namespace Emmock.Application.ViewModels
 	{
 		private readonly IRigService m_rigService;
 		private readonly IEquipmentService m_equipmentService;
-		private readonly List<Equipment> m_rigEquipment = new List<Equipment>();
 
 		public RigDetailsViewModel(IRigService rigService, IEquipmentService equipmentService, IPageService pageService) : base(pageService)
 		{
 			m_rigService = rigService;
 			m_equipmentService = equipmentService;
 
+			EditRigCommand = new DelegateCommand(EditRig);
 			CreateNewSystemCommand = new DelegateCommand(CreateSystem);
 			ShowSystemDetailsCommand = new DelegateCommand<Equipment>(ShowSystemDetails);
 		}
 
+        public ICommand EditRigCommand { get; }
 		public ICommand CreateNewSystemCommand { get; }
 		public ICommand ShowSystemDetailsCommand { get; }
 
@@ -56,6 +57,14 @@ namespace Emmock.Application.ViewModels
 				return;
 
 			Initialize(rigId);
+		}
+
+		private void EditRig()
+		{
+			Dictionary<string, object> pageParameters = new Dictionary<string, object>();
+			pageParameters["RigId"] = RigDetails.Id;
+
+			m_pageService.ShowPage<EditRigViewModel>(true, pageParameters);
 		}
 
 		private void CreateSystem()

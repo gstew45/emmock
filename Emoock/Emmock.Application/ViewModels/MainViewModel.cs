@@ -1,5 +1,5 @@
 ﻿using Emmock.Application.Models;
-using Emmock.Application.Supporting;
+using Emmock.Core.Supporting;
 using Prism.Commands;
 using System;
 using System.Collections.ObjectModel;

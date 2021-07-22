@@ -34,6 +34,12 @@ namespace Emmock.Application
 			services.AddTransient<CreateNewEquipmentViewModel>()
 				.AddTransient<IPageViewModel, CreateNewEquipmentViewModel>(s => s.GetService<CreateNewEquipmentViewModel>());
 
+			services.AddTransient<EditRigViewModel>()
+				.AddTransient<IPageViewModel, EditRigViewModel>(s => s.GetService<EditRigViewModel>());
+
+			services.AddTransient<EditEquipmentViewModel>()
+				.AddTransient<IPageViewModel, EditEquipmentViewModel>(s => s.GetService<EditEquipmentViewModel>());
+
 			services.AddTransient<TestingViewModel>()
 				.AddTransient<IPageViewModel, TestingViewModel>(s => s.GetService<TestingViewModel>());
 

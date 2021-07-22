@@ -18,5 +18,7 @@ namespace Emmock.Core.Models
 		{
 			TypedValue = (T)value;
 		}
+
+		public abstract IField Copy();
 	}
 }

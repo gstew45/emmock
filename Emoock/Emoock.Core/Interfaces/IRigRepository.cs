@@ -7,5 +7,6 @@ namespace Emmock.Core.Interfaces
 	{
 		Rig Create(string rigType, string name, string description);
 		IEnumerable<Rig> GetAll();
+		void Update(Rig rigUnderEdit);
 	}
 }

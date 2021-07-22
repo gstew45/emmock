@@ -24,5 +24,7 @@ namespace Emmock.Services
 		public IEnumerable<Rig> GetAllRigs() => m_rigRepo.GetAll();
 
 		public Rig GetRigById(string rigId) => GetAllRigs().FirstOrDefault(r => r.Id == rigId);
+
+		public void UpdateRig(Rig rigUnderEdit) => m_rigRepo.Update(rigUnderEdit);
 	}
 }

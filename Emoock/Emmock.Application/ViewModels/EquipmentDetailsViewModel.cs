@@ -15,10 +15,12 @@ namespace Emmock.Application.ViewModels
 		{
 			m_equipmentService = equipmentService;
 
+			EditEquipmentCommand = new DelegateCommand(EditEquipment);
 			CreateNewEquipmentCommand = new DelegateCommand(CreateNewEquipment);
 			ShowEquipmentDetailsCommand = new DelegateCommand<Equipment>(ShowEquipmentDetails);
 		}
 
+		public ICommand EditEquipmentCommand { get; }
 		public ICommand CreateNewEquipmentCommand { get; }
 		public ICommand ShowEquipmentDetailsCommand { get; }
 
@@ -43,11 +45,6 @@ namespace Emmock.Application.ViewModels
 			{
 				Equipment.Add(equipment);
 			}
-		}
-
-		public void EditEquipment()
-		{
-			IsEquipmentUnderEdit = true;
 		}
 
 		public void ConfirmEdit()
@@ -88,6 +85,14 @@ namespace Emmock.Application.ViewModels
 			pageParams.Add("EquipmentDetails", EquipmentDetails);
 
 			m_pageService.ShowPage<CreateNewEquipmentViewModel>(true, pageParams);
+		}
+
+		private void EditEquipment()
+		{
+			Dictionary<string, object> pageParameters = new Dictionary<string, object>();
+			pageParameters["EquipmentId"] = EquipmentDetails.Id;
+
+			m_pageService.ShowPage<EditEquipmentViewModel>(true, pageParameters);
 		}
 	}
 }

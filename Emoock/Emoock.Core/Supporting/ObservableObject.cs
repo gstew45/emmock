@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Emmock.Application.Supporting
+namespace Emmock.Core.Supporting
 {
 	/// <summary>
 	///		Base class for ViewModels with INotifyPropertyChanged

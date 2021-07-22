@@ -19,11 +19,17 @@
 		</DataTemplate>
 		<DataTemplate DataType="{x:Type app:CreateSystemViewModel}">
 			<pages:CreateNewSystemPage />
-		</DataTemplate>
-		<DataTemplate DataType="{x:Type app:CreateNewEquipmentViewModel}">
-			<pages:CreateNewEquipmentPage />
-		</DataTemplate>
-		<DataTemplate DataType="{x:Type app:RigDetailsViewModel}">
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type app:CreateNewEquipmentViewModel}">
+            <pages:CreateNewEquipmentPage />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type app:EditRigViewModel}">
+            <pages:EditRigPage />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type app:EditEquipmentViewModel}">
+            <pages:EditEquipmentPage />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type app:RigDetailsViewModel}">
 			<pages:RigDetailsPage />
 		</DataTemplate>
 		<DataTemplate DataType="{x:Type app:EquipmentDetailsViewModel}">

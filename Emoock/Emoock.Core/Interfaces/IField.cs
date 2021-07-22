@@ -1,6 +1,6 @@
 ﻿namespace Emmock.Core.Interfaces
 {
-	public interface IField
+	public interface IField : ICopy<IField>
 	{
 		string Name { get; set; }
 		string Type { get; }

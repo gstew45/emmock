@@ -1,4 +1,4 @@
-﻿using Emmock.Application.Supporting;
+﻿using Emmock.Core.Supporting;
 
 namespace Emmock.Application.ViewModels.Authentication
 {

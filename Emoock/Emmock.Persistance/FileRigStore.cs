@@ -65,5 +65,18 @@ namespace Emmock.Persistance
 		}
 
 		public IEnumerable<Rig> GetAll() => m_rigs;
+
+		public void Update(Rig rigUnderEdit)
+		{
+			int indexOfRig = m_rigs.FindIndex(r => r.Id == rigUnderEdit.Id);
+			m_rigs[indexOfRig] = rigUnderEdit;
+
+			string rigData = m_serializer.SerializeObject(m_rigs);
+
+			lock (m_rigStoreLock)
+			{
+				m_fileSystem.File.WriteAllText(m_rigStorePath, rigData);
+			}
+		}
 	}
 }

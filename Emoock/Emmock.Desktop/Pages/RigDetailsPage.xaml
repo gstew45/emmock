@@ -7,18 +7,39 @@
 			 mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 	<Grid>
-		<Grid.RowDefinitions>
-			<RowDefinition Height="auto" />
-			<RowDefinition Height="auto" />
-			<RowDefinition Height="auto" />
-			<RowDefinition Height="auto" />
-			<RowDefinition Height="*" />
-		</Grid.RowDefinitions>
-		<TextBlock Text="{Binding Title}"
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <TextBlock Text="{Binding Title}"
 				   Style="{StaticResource Header}"
-				   Grid.Row="0"
 				   VerticalAlignment="Center" />
-		<TextBlock Text="{Binding RigDetails.Type, StringFormat='Type: {0}'}"
+
+            <Button Command="{Binding EditRigCommand}"
+					Width="70"
+					Height="30"
+					Cursor="Hand"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border Background="{StaticResource Primary}"
+								BorderBrush="Transparent"
+								BorderThickness="0">
+                            <TextBlock Text="Edit"
+									   Style="{StaticResource SecondaryDefault}"
+									   VerticalAlignment="Center"
+									   HorizontalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </Grid>
+        <TextBlock Text="{Binding RigDetails.Type, StringFormat='Type: {0}'}"
 				   Style="{StaticResource Paragraph}"
 				   Grid.Row="1"
 				   Margin="2,20,0,0"
