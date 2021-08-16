@@ -1,6 +1,9 @@
 ﻿using Emmock.Application.Factories;
+using Emmock.Application.Interfaces;
+using Emmock.Application.Messaging;
 using Emmock.Application.Services;
 using Emmock.Application.ViewModels;
+using Emmock.Application.ViewModels.Controls;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Emmock.Application
@@ -9,6 +12,8 @@ namespace Emmock.Application
 	{
 		public static void AddApplicationServices(this IServiceCollection services)
 		{
+			services.AddSingleton<IMessengerHub, MessengerHub>();
+			services.AddTransient<IFormItemFactory, FormItemFactory>();
 			services.AddTransient<ISideBarContextFactory, SideBarContextFactory>();
 			services.AddTransient<IPageFactory, PageFactory>();
 			services.AddSingleton<BreadcrumbNavigationViewModel>();
@@ -31,6 +36,9 @@ namespace Emmock.Application
 			services.AddTransient<CreateSystemViewModel>()
 				.AddTransient<IPageViewModel, CreateSystemViewModel>(s => s.GetService<CreateSystemViewModel>());
 
+			services.AddTransient<CreateTestViewModel>()
+				.AddTransient<IPageViewModel, CreateTestViewModel>(s => s.GetService<CreateTestViewModel>());
+
 			services.AddTransient<CreateNewEquipmentViewModel>()
 				.AddTransient<IPageViewModel, CreateNewEquipmentViewModel>(s => s.GetService<CreateNewEquipmentViewModel>());
 
@@ -45,6 +53,10 @@ namespace Emmock.Application
 
 			services.AddTransient<RecentTestsViewModel>()
 				.AddTransient<IPageViewModel, RecentTestsViewModel>(s => s.GetService<RecentTestsViewModel>());
+
+			services.AddTransient<IToolboxViewModel, ToolboxViewModel>();
+			services.AddTransient<IPropertiesViewModel, PropertiesViewModel>();
+			services.AddTransient<IFormSurfaceViewModel, FormSurfaceViewModel>();
 
 			services.AddTransient<MainViewModel>();
 		}

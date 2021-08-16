@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="Emmock.Desktop.Controls.PropertyValueDisplayerControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			 xmlns:properties="clr-namespace:Emmock.Application.Models.Properties;assembly=Emmock.Application"
+             mc:Ignorable="d"
+			 d:DesignHeight="450"
+			 d:DesignWidth="800">
+	<UserControl.Resources>
+		<DataTemplate DataType="{x:Type properties:PropertyValue}">
+			<StackPanel Margin="0,20,0,0">
+				<TextBlock Text="{Binding DisplayName}" />
+				<TextBox Text="{Binding Value, UpdateSourceTrigger=PropertyChanged}"
+						 Margin="0,10,0,0" />
+			</StackPanel>
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type properties:BooleanPropertyValue}">
+			<CheckBox Content="{Binding DisplayName}"
+					  IsChecked="{Binding Value, UpdateSourceTrigger=PropertyChanged}" 
+					  Margin="0,10,0,0" />
+		</DataTemplate>
+	</UserControl.Resources>
+	<ContentPresenter Content="{Binding}"
+					  Margin="5" />
+</UserControl>

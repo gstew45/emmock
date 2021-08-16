@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="Emmock.Desktop.Controls.FormSurface"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+			 xmlns:controls="clr-namespace:Emmock.Desktop.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+			 Loaded="FormSurface_Loaded">
+    <Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="auto" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+		<ListView Style="{StaticResource NoBorderListViewStyle}"
+				  ItemsSource="{Binding FormItems}"
+				  ItemContainerStyle="{StaticResource FlatListItemStyle}"
+				  Margin="10">
+			<ListView.ItemsPanel>
+				<ItemsPanelTemplate>
+					<StackPanel Orientation="Vertical" />
+				</ItemsPanelTemplate>
+			</ListView.ItemsPanel>
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<controls:FormItemDisplayerControl DataContext="{Binding}"/>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+		
+		<Border Height="100"
+				AllowDrop="True"
+				Drop="Border_Drop"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Top"
+				Background="{StaticResource PrimarySelected}"
+				BorderBrush="{StaticResource Primary}"
+				BorderThickness="1"
+				CornerRadius="5"
+				Margin="10"
+				Grid.Row="1">
+			<TextBlock Text="Drop item to add it to the form"
+					   Style="{StaticResource SecondaryTitle}" 
+					   VerticalAlignment="Center"
+					   HorizontalAlignment="Center" />
+			<Border.Triggers>
+				<EventTrigger RoutedEvent="DragEnter">
+					<BeginStoryboard>
+						<Storyboard>
+							<ColorAnimation Storyboard.TargetProperty="Background"
+											Duration="0:0:0"
+											To="{StaticResource PrimaryColor}" />
+						</Storyboard>
+					</BeginStoryboard>
+				</EventTrigger>
+			</Border.Triggers>
+		</Border>
+	</Grid>
+</UserControl>

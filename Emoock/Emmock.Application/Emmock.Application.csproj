@@ -13,8 +13,4 @@
     <ProjectReference Include="..\Emoock.Core\Emmock.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
-
 </Project>

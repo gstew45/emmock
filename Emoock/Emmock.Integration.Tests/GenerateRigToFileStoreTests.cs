@@ -19,21 +19,22 @@ namespace Emmock.Integration.Tests
 			IFileSystem fIleSystem = new FileSystem();
 			ISerializer serializer = new EmmockJsonSerializer();
 
-			FileRigStore rigRepo = new FileRigStore(fIleSystem, serializer);
-			FileEquipmentStore equipmentRepo = new FileEquipmentStore(fIleSystem, serializer);
+			IRigRepository rigRepo = new FileRigStore(fIleSystem, serializer);
+			IEquipmentRepository equipmentRepo = new FileEquipmentStore(fIleSystem, serializer);
 			IRigTemplateRepository rigTemplateRepo = new FileRigTemplateStore(fIleSystem, serializer);
 
 			RigTemplate rigTemplate = rigTemplateRepo.GetRigTemplate("Jackup");
 
 			// act
 			RigGenerator rigGenerator = new RigGenerator(rigRepo, equipmentRepo, rigTemplateRepo);
-			rigGenerator.GenerateRig("Jackup", string.Empty, string.Empty);
+			Rig generatedRig = rigGenerator.GenerateRig("Jackup", "Rig For Test", "");
+
+			Rig actualRig = rigRepo.GetAll().FirstOrDefault(r => r.Id == generatedRig.Id);
 
 			// assert
-			Assert.AreEqual(1, rigRepo.Rigs.Count());
-			Assert.AreEqual(rigTemplate.EquipmentTemplates.Count, equipmentRepo.Equipment.Count());
+			Assert.IsNotNull(actualRig);
+			Assert.AreEqual(generatedRig.Name, actualRig.Name);
 
-			// TODO: Much deeper check around rig properties from generated rig
 			// TODO: Much deeper check around equipment created from generator
 		}
 	}

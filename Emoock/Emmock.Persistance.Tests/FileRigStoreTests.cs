@@ -11,6 +11,7 @@ using System.Linq;
 namespace Emmock.Persistance.Tests
 {
 	[TestClass]
+	[Ignore]
 	public class FileRigStoreTests 
 	{
 		private const string CurrentDirectoryPath = "CurrentDirectory";

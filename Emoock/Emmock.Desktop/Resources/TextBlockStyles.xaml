@@ -16,12 +16,19 @@
 		<Setter Property="FontFamily"
 				Value="{StaticResource DefaultFontBold}" />
 	</Style>
-	
+
 	<Style x:Key="Header"
 		   TargetType="{x:Type TextBlock}"
 		   BasedOn="{StaticResource Bold}">
 		<Setter Property="FontSize"
 				Value="{StaticResource XLarge}" />
+	</Style>
+	
+	<Style x:Key="SectionTitle"
+		   TargetType="{x:Type TextBlock}"
+		   BasedOn="{StaticResource Bold}">
+		<Setter Property="FontSize"
+				Value="{StaticResource Large}" />
 	</Style>
 
 	<Style x:Key="Paragraph"

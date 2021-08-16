@@ -9,6 +9,7 @@
 				<ResourceDictionary Source="pack://application:,,,/Emmock.Desktop;component/Resources/FontStyles.xaml" />
 				<ResourceDictionary Source="pack://application:,,,/Emmock.Desktop;component/Resources/TextBlockStyles.xaml" />
 				<ResourceDictionary Source="pack://application:,,,/Emmock.Desktop;component/Resources/DataGridStyles.xaml" />
+				<ResourceDictionary Source="pack://application:,,,/Emmock.Desktop;component/Resources/ListViewStyles.xaml" />
 			</ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>
     </Application.Resources>

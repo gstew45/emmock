@@ -55,10 +55,12 @@ namespace Emmock.Desktop
 			services.AddSingleton<IEquipmentRepository, FileEquipmentStore>();
 			services.AddSingleton<IRigTemplateRepository, FileRigTemplateStore>();
 			services.AddSingleton<IRigRepository, FileRigStore>();
+			services.AddSingleton<ITestRepository, FileTestStore>();
 
 			services.AddTransient<IRigGenerator, RigGenerator>();
 			services.AddTransient<IRigService, FileRigService>();
 			services.AddTransient<IEquipmentService, FileEquipmentService>();
+			services.AddTransient<ITestService, FileTestService>();
 
 			services.AddApplicationServices();
 
